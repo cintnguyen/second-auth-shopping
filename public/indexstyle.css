@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
+}
+
+body{
+    background:url(img/backgroundOne.png) no-repeat;
+    background-size:cover;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0;
+    color:#FFFD47;
+}
+
+.whole{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+}
+
+h1{
+    font-size:5rem;
+    text-align: center;
+}
+
+.btn{
+    text-decoration: none;
+    color:#FFFD47;
+    border:1px solid #FFFD47;
+    padding: 8px 30px;
+}
+
+.buttons{
+    display:flex;
+    justify-content: space-between;
+    width:50%;
+}
+
+a:hover{
+    background:rgb(255,255,255,0.3);
+}

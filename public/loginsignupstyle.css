@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
+  }
+  
+  
+body{
+    background:url(img/backgroundOne.png) no-repeat;
+    background-size:cover;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0;
+    color:black;
+}
+
+.container{
+    background:rgb(255,255,255,0.2);
+}
+
+a{
+    color:white;
+}

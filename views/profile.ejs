@@ -1,74 +1,77 @@
 <!doctype html>
 <html>
-<head>
-    <title>Second-Auth-Shopping</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
 
-    <div class="page-header text-center">
-        <h1>Shopping</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+<head>
+  <title>Second-Auth-Shopping</title>
+  <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  
+  <section class="header">
+    <h1>Shopping Portal</h1>
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+  </section>
+
+  <section class = "body">
+    <div class="col-sm-6 flash">
+      <h3 class="sale">FLASH SALE!</h3>
+      <ul class="messages">
+        <% for(var i=0; i<messages.length; i++) {%>
+          <li class="message">
+            <span>
+              <%= messages[i].name %>
+            </span>
+            <span>selling: $<%= messages[i].price %>
+                <%= messages[i].item %></span>
+            <span><i data-id="<%= messages[i]._id %>" data-price="<%= messages[i].price %>"
+                data-item=" <%= messages[i].item %>" class="fa fa-plus" aria-hidden="true"></i></span>
+            <span><i data-id="<%= messages[i]._id %>" class="fa fa-trash" aria-hidden="true"></i></span>
+          </li>
+          <% } %>
+      </ul>
+
+      <h2 class="post">Post what you're selling:</h2>
+      <% if (user.local.email) { %>
+        <form action="/messages" method="POST">
+          <input type="text" value="<%= user.local.email %>" name="name">
+          <input type="text" placeholder="item" name="item">
+          <input type="number" placeholder="price" name="price">
+          <button type="submit">Submit</button>
+        </form>
+        <% } %>
     </div>
+
 
     <div class="row">
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-shop"></span> Your Shopping Cart</h3>
-
-                <% if (user.local.email) { %>
-                    <p>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                    </p>
-
-                    <p><strong>Items In The Cart</strong>:</p>
-                    <ul class="items">
-                      <% for(var i=0; i<user.cart.length; i++) {%>
-                        <li class="item">
-                          <span><%= user.cart[i] %></span>
-                        </li>
-                      <% } %>
-                    </ul>
-
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                <% } %>
-
-            </div>
-        </div>
-        <div class="col-sm-6">
-          <h3>Items being sold right now!</h3>
-          <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
-            <li class="message">
-              <span><%= messages[i].name %></span>
-              <span>selling: $<%= messages[i].price %> <%= messages[i].item %></span>
-              <span><i data-id="<%= messages[i]._id %>" data-price="<%= messages[i].price %>" data-item=" <%= messages[i].item %>" class="fa fa-plus" aria-hidden="true"></i></span>
-              <span><i data-id="<%= messages[i]._id %>" class="fa fa-trash" aria-hidden="true"></i></span>
+      <h3><span class="fa fa-shop"></span> Your Shopping Cart</h3>
+      <% if (user.local.email) { %>
+        <p>
+          <strong>Email</strong>: <%= user.local.email %><br>
+        </p>
+        <p><strong>Items In The Cart</strong>:</p>
+        <ul class="items">
+          <% for(var i=0; i<user.cart.length; i++) {%>
+            <li class="item">
+              <span>
+                <%= user.cart[i] %>
+              </span>
             </li>
-          <% } %>
-          </ul>
-
-        <h2>Post what you're selling!</h2>
-        <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" value="<%= user.local.email %>" name="name">
-            <input type="text" placeholder="item" name="item">
-            <input type="number" placeholder="price" name="price">
-            <button type="submit">Submit</button>
-          </form>
-        </div>
+            <% } %>
+        </ul>
+        <% } else { %>
+          <a href="/connect/local" class="btn btn-default">Connect Local</a>
         <% } %>
 
-</div>
 
-<script src="main.js"></script>
 
+    </div>
+  </section>
+
+  <script src="main.js"></script>
 </body>
+
 </html>

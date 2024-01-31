@@ -2,7 +2,7 @@
 
 Say hello to effortless buying and selling with this full-stack app. Post what you're selling, build your shopping cart on the go, and discover amazing finds all in one place. Let's simplify your shopping experience! 
 
-Check it out here - X To demo a fully populated site, feel free to use these login credentials:
+Check it out here - https://levelupshop.onrender.com/ To demo a fully populated site, feel free to use these login credentials:
 
 - Email: cindy@gmail.com
 - Password: testing
